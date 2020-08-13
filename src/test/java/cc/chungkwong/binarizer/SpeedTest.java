@@ -42,10 +42,11 @@ public class SpeedTest{
 			binarizers.add(new NiblackBasedBinarizer(formula,new EfficientAlgorithm(),window));
 			binarizers.add(new NaiveBernsenBinarizer(window,window,0.5,80));
 			binarizers.add(new BernsenBinarizer(window,window,0.5,80));
-			testSpeed(directory,binarizers.toArray(Binarizer[]::new));
+			Binarizer[] bin_arr = binarizers.toArray(new Binarizer[0]);
+			testSpeed(directory, bin_arr);
 		}
 	}
-	public static void testSpeed(File directory,Binarizer... binarizers){
+	public static void testSpeed(File directory, Binarizer... binarizers){
 		System.out.println("Testing speed: "+directory);
 		ThreadMXBean timer=ManagementFactory.getThreadMXBean();
 		long[] time=new long[binarizers.length];
